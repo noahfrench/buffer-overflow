@@ -1,0 +1,20 @@
+	;; Noah French (njf5cu)
+	
+	global shellcode
+
+	section	.text
+shellcode:
+	jmp afterString
+string:
+	db "Noah French, your grade on this assignment is an A+"
+afterString:
+	xor eax, eax
+	mov al, 1
+	mov edi, eax
+	lea esi, [rel string]
+	xor edx, edx
+	mov dl, 51
+	syscall
+	mov al, 60
+	xor edi, edi
+	syscall
